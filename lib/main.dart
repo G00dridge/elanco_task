@@ -108,10 +108,9 @@ class MyFlutterState extends State<MyFlutterApp> with TickerProviderStateMixin {
 
   }
 
-  List<Widget> _createResourceButtons(String appsOrResources) { // add functional
+  List<Widget> _createResourceButtons() { // add functional
     getResourcesAndApps();
     List<Widget> buttons = [];
-    if (appsOrResources == 'resources') {
       resourceNames.sort();
       for (String name in resourceNames) {
         if (name != null) {
@@ -135,8 +134,6 @@ class MyFlutterState extends State<MyFlutterApp> with TickerProviderStateMixin {
           print('name not found');
         }
       }
-      return buttons;
-    }
       return buttons;
   }
 
@@ -419,7 +416,7 @@ class MyFlutterState extends State<MyFlutterApp> with TickerProviderStateMixin {
                       ),
                     ),
                     Align(
-                      alignment: Alignment(-0.35,0.7),
+                      alignment: Alignment(-0.36,0.7),
                       child: Visibility( // visibility widget used to hide and show resource list
                         visible: resourceNamePopUp,
                         child: SizedBox(
@@ -427,14 +424,14 @@ class MyFlutterState extends State<MyFlutterApp> with TickerProviderStateMixin {
                           width: MediaQuery.of(context).size.width*0.2,
                           child: SingleChildScrollView(
                             child: Column(
-                                children: _createAppButtons()
+                                children: _createResourceButtons()
                             ),
                           ),
                         ),
                       ),
                     ),
                     Align(
-                      alignment: Alignment(-0.35,0.7),
+                      alignment: Alignment(-0.36,0.7),
                       child: Visibility( // visibility widget used to hide and show apps list
                         visible: appNamePopUp,
                         child: SizedBox(
@@ -442,7 +439,7 @@ class MyFlutterState extends State<MyFlutterApp> with TickerProviderStateMixin {
                           width: MediaQuery.of(context).size.width*0.2,
                           child: SingleChildScrollView(
                             child: Column(
-                                children: _createResourceButtons('resources')
+                                children: _createAppButtons()
                             ),
                           ),
                         ),
