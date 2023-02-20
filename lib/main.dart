@@ -219,36 +219,7 @@ class MyFlutterState extends State<MyFlutterApp> with TickerProviderStateMixin {
               child: Stack( // main container for all the widgets
                   alignment: Alignment.topLeft,
                   children: [
-                    Align(
-                      alignment: Alignment(-0.35,0.7),
-                      child: Visibility( // visibility widget used to hide and show resource list
-                        visible: resourceNamePopUp,
-                        child: SizedBox(
-                          height: MediaQuery.of(context).size.height*0.7,
-                          width: MediaQuery.of(context).size.width*0.2,
-                          child: SingleChildScrollView(
-                            child: Column(
-                                children: _createAppButtons()
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment(-0.35,0.7),
-                      child: Visibility( // visibility widget used to hide and show apps list
-                        visible: appNamePopUp,
-                        child: SizedBox(
-                          height: MediaQuery.of(context).size.height*0.7,
-                          width: MediaQuery.of(context).size.width*0.2,
-                          child: SingleChildScrollView(
-                            child: Column(
-                                children: _createResourceButtons('resources')
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
+
                     Align(
                       alignment: const Alignment(-0.8, 0.35),
                       child: MaterialButton( // order by date
@@ -273,16 +244,6 @@ class MyFlutterState extends State<MyFlutterApp> with TickerProviderStateMixin {
                             fontWeight: FontWeight.w400,
                             fontStyle: FontStyle.normal,
                           ),
-                        ),
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment(-0.45,-0.55),
-                      child: Visibility(
-                        visible: showPopUpExitButton,
-                        child: IconButton(
-                          icon: const Icon(Icons.close),
-                          onPressed: (){closePopUps();} ,
                         ),
                       ),
                     ),
@@ -412,7 +373,7 @@ class MyFlutterState extends State<MyFlutterApp> with TickerProviderStateMixin {
                                 ),
                               ),
                             ),
-                            MaterialButton( // serach button attached to the side of the textField
+                            MaterialButton( // search button attached to the side of the textField
                               color: Colors.indigo,
                               height: 60,
                               child: const Text(
@@ -446,6 +407,46 @@ class MyFlutterState extends State<MyFlutterApp> with TickerProviderStateMixin {
                               )
                           )
                       )
+                    ),
+                    Align( // apps and resource list closing button
+                      alignment: Alignment(-0.45,-0.55),
+                      child: Visibility(
+                        visible: showPopUpExitButton,
+                        child: IconButton(
+                          icon: const Icon(Icons.close),
+                          onPressed: (){closePopUps();} ,
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment(-0.35,0.7),
+                      child: Visibility( // visibility widget used to hide and show resource list
+                        visible: resourceNamePopUp,
+                        child: SizedBox(
+                          height: MediaQuery.of(context).size.height*0.7,
+                          width: MediaQuery.of(context).size.width*0.2,
+                          child: SingleChildScrollView(
+                            child: Column(
+                                children: _createAppButtons()
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment(-0.35,0.7),
+                      child: Visibility( // visibility widget used to hide and show apps list
+                        visible: appNamePopUp,
+                        child: SizedBox(
+                          height: MediaQuery.of(context).size.height*0.7,
+                          width: MediaQuery.of(context).size.width*0.2,
+                          child: SingleChildScrollView(
+                            child: Column(
+                                children: _createResourceButtons('resources')
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
                   ])
           ),
